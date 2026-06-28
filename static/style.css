@@ -142,3 +142,9 @@ button:hover {
   background: #ff3fa4;
   color: white;
 }
+.poster {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid #181818;
+  margin-bottom: 14px;
+}
