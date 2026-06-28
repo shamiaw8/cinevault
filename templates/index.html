@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineVault</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">movie tracking database</p>
+        <h1>CineVault</h1>
+        <p class="subtitle">track what you watched, what you loved, and what deserves emotional damages.</p>
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <div class="card">
+        <h2>Add Movie</h2>
+
+        <form action="/add" method="POST">
+          <input name="title" placeholder="movie title" required />
+          <input name="genre" placeholder="genre" />
+
+          <select name="status">
+            <option>Want to Watch</option>
+            <option>Watching</option>
+            <option>Watched</option>
+          </select>
+
+          <select name="rating">
+            <option value="">rating</option>
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
+          </select>
+
+          <textarea name="notes" placeholder="notes"></textarea>
+
+          <button type="submit">save movie</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Library</h2>
+
+        {% for movie in movies %}
+          <div class="movie">
+            <h3>{{ movie[1] }}</h3>
+            <p><strong>genre:</strong> {{ movie[2] }}</p>
+            <p><strong>status:</strong> {{ movie[3] }}</p>
+            <p><strong>rating:</strong> {{ movie[4] }}/5</p>
+            <p>{{ movie[5] }}</p>
+            <a href="/delete/{{ movie[0] }}">delete</a>
+          </div>
+        {% else %}
+          <p>no movies yet. tragic. add one.</p>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+</body>
+</html>
