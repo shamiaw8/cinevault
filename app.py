@@ -34,7 +34,8 @@ def init_db():
 
     conn.commit()
     conn.close()
-
+    
+init_db()
 
 def fetch_movie(title):
     url = f"{TMDB_BASE_URL}/search/movie"
@@ -129,6 +130,5 @@ def delete_movie(movie_id):
 
 
 if __name__ == "__main__":
-    init_db()
     app.run(host="0.0.0.0")
 
