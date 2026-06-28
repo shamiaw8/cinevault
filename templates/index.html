@@ -47,19 +47,29 @@
 
       <div class="card">
         <h2>Library</h2>
+{% for movie in movies %}
+  <div class="movie">
+    {% if movie[8] %}
+      <img src="{{ movie[8] }}" alt="{{ movie[1] }} poster" class="poster" />
+    {% endif %}
 
-        {% for movie in movies %}
-          <div class="movie">
-            <h3>{{ movie[1] }}</h3>
-            <p><strong>genre:</strong> {{ movie[2] }}</p>
-            <p><strong>status:</strong> {{ movie[3] }}</p>
-            <p><strong>rating:</strong> {{ movie[4] }}/5</p>
-            <p>{{ movie[5] }}</p>
-            <a href="/delete/{{ movie[0] }}">delete</a>
-          </div>
-        {% else %}
-          <p>no movies yet. tragic. add one.</p>
-        {% endfor %}
+    <h3>{{ movie[1] }}</h3>
+
+    <p><strong>genre:</strong> {{ movie[2] }}</p>
+    <p><strong>status:</strong> {{ movie[3] }}</p>
+    <p><strong>your rating:</strong> {{ movie[4] }}/5</p>
+    <p><strong>tmdb rating:</strong> {{ movie[9] }}/10</p>
+    <p><strong>release date:</strong> {{ movie[6] }}</p>
+
+    <p>{{ movie[7] }}</p>
+    <p><em>{{ movie[5] }}</em></p>
+
+    <a href="/delete/{{ movie[0] }}">delete</a>
+  </div>
+{% else %}
+  <p>no movies yet. tragic. add one.</p>
+{% endfor %}
+
       </div>
     </section>
   </main>
