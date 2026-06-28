@@ -119,6 +119,13 @@ button:hover {
   box-shadow: 4px 4px 0 #181818;
 }
 
+.poster {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid #181818;
+  margin-bottom: 14px;
+}
+
 .movie {
   background: #fffaf4;
   border: 1px solid #181818;
@@ -141,10 +148,4 @@ button:hover {
 ::selection {
   background: #ff3fa4;
   color: white;
-}
-.poster {
-  width: 100%;
-  border-radius: 18px;
-  border: 1px solid #181818;
-  margin-bottom: 14px;
 }
