@@ -12,7 +12,9 @@
       <div>
         <p class="eyebrow">movie tracking database</p>
         <h1>CineVault</h1>
-        <p class="subtitle">track what you watched, what you loved, and what deserves emotional damages.</p>
+        <p class="subtitle">
+          track what you watched, what you loved, and what deserves emotional damages.
+        </p>
       </div>
     </section>
 
@@ -47,29 +49,40 @@
 
       <div class="card">
         <h2>Library</h2>
-{% for movie in movies %}
-  <div class="movie">
-    {% if movie[8] %}
-      <img src="{{ movie[8] }}" alt="{{ movie[1] }} poster" class="poster" />
-    {% endif %}
 
-    <h3>{{ movie[1] }}</h3>
+        {% for movie in movies %}
+          <div class="movie">
+            {% if movie[8] %}
+              <img src="{{ movie[8] }}" alt="{{ movie[1] }} poster" class="poster" />
+            {% endif %}
 
-    <p><strong>genre:</strong> {{ movie[2] }}</p>
-    <p><strong>status:</strong> {{ movie[3] }}</p>
-    <p><strong>your rating:</strong> {{ movie[4] }}/5</p>
-    <p><strong>tmdb rating:</strong> {{ movie[9] }}/10</p>
-    <p><strong>release date:</strong> {{ movie[6] }}</p>
+            <h3>{{ movie[1] }}</h3>
 
-    <p>{{ movie[7] }}</p>
-    <p><em>{{ movie[5] }}</em></p>
+            <p><strong>genre:</strong> {{ movie[2] }}</p>
+            <p><strong>status:</strong> {{ movie[3] }}</p>
+            <p><strong>your rating:</strong> {{ movie[4] }}/5</p>
 
-    <a href="/delete/{{ movie[0] }}">delete</a>
-  </div>
-{% else %}
-  <p>no movies yet. tragic. add one.</p>
-{% endfor %}
+            {% if movie[9] %}
+              <p><strong>tmdb rating:</strong> {{ movie[9] }}/10</p>
+            {% endif %}
 
+            {% if movie[6] %}
+              <p><strong>release date:</strong> {{ movie[6] }}</p>
+            {% endif %}
+
+            {% if movie[7] %}
+              <p>{{ movie[7] }}</p>
+            {% endif %}
+
+            {% if movie[5] %}
+              <p><em>{{ movie[5] }}</em></p>
+            {% endif %}
+
+            <a href="/delete/{{ movie[0] }}">delete</a>
+          </div>
+        {% else %}
+          <p>no movies yet. tragic. add one.</p>
+        {% endfor %}
       </div>
     </section>
   </main>
